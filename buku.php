@@ -4,31 +4,6 @@
 <div class="row">
  <div class="col-md-12">
     <a href="?page=buku_tambah" class="btn btn-primary">+ Tambah Data</a>
-    
-    <!-- <div class="row mb-3">
-    <div class="col-md-6">
-        <form action="" method="GET">
-            <div class="input-group">
-                <input type="text" class="form-control" name="cari" placeholder="Cari Nama Buku">
-                <button class="btn btn-primary" type="submit">Cari</button>
-            </div>
-        </form>
-    </div>
-    <div class="col-md-6 d-flex justify-content-end">
-        <a href="?page=buku_tambah" class="btn btn-primary">+ Tambah Data</a>
-    </div>
-</div> -->
-
-<?php
-$cari = isset($_GET['cari']) ? $_GET['cari'] : '';
-$query = "SELECT * FROM book LEFT JOIN kategori ON book.id_kategori = kategori.id_kategori WHERE judul_buku LIKE '%$cari%'";
-$result = mysqli_query($koneksi, $query);
-
-$i = 1;
-while($data = mysqli_fetch_array($result)) {
-    // Tampilkan data buku
-}
-?>
 
     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
         <tr>
@@ -41,18 +16,19 @@ while($data = mysqli_fetch_array($result)) {
             <th>Tahun Terbit</th>
             <th>Deskripsi</th>
             <th>Stok</th>
+            <th>Aksi</th>
         </tr>
         <?php
         $i=1;
         $query =  mysqli_query($koneksi, "SELECT*FROM book LEFT JOIN kategori on book.id_kategori = kategori.id_kategori");
-
         while($data = mysqli_fetch_array($query)){
-            ?>
+       
+        ?>
             <tr>
                 <td><?php echo $i++; ?> </td>
                 <td><?php echo $data['nama_kategori']; ?> </td>
-                <td> <?php if ($data['sampul'] != ''): ?>
 
+                <td> <?php if ($data['sampul'] != ''): ?>
                 <img src="gambar/<?php echo $data['sampul']; ?>" style="width: 150px; height: 200px;">
                  <?php else: ?>
                 <img src="gambar/eror.jpg" style="width: 150px; height: 200px;">

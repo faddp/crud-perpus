@@ -31,6 +31,7 @@
 
     <div class="row mb-3">
     <div class="col-md-2">Kategori </div>
+    <div class="col-md-8">
         <select name="id_kategori" class="form-control">
             <?php
             $kat = mysqli_query($koneksi,"SELECT * FROM kategori");
@@ -42,9 +43,10 @@
             ?>
         </select>
     </div>
+    </div>
     <div class="row mb-3">
     <div class="col-md-2">Sampul </div>
-    <div class="col-md-8"><input type="file" class="form-control" name="sampul"></div>
+    <div class="col-md-8"><input type="file" value="<?php echo $data['sampul']; ?>" class="form-control" name="sampul"></div>
     </div>
     <div class="row mb-3">
     <div class="col-md-2">Judul </div>
@@ -64,14 +66,13 @@
     </div>
     <div class="row mb-3">
     <div class="col-md-2">Deskripsi </div>
-    <div class="col-md-8">
-        <input name="deskripsi"rows="2" class="form-control"><?php echo $data['deskripsi']; ?></input>
+    <div class="col-md-8"><input type="text" value="<?php echo $data['deskripsi']; ?>" class="form-control" name="deskripsi"></div>
     </div>
     <div class="row mb-3">
     <div class="col-md-2">Stok Buku </div>
     <div class="col-md-8"><input type="number" value="<?php echo $data['stok']; ?>" class="form-control" name="stok"></div>
     </div>
-    </div>
+    
    <div class="row">
     <div class="col-md-4"></div>
 

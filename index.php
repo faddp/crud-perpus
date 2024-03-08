@@ -16,6 +16,8 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Perpustakaan</title>
+        <!-- Datepicker -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <!-- Datatabel -->
         <link href="//cdn.datatables.net/2.0.0/css/dataTables.dataTables.min.css" rel="stylesheet"/>
@@ -100,6 +102,10 @@
                             <?php
                             if ($_SESSION['user']['role_id'] == 'Admin') {
                             ?>
+                             <a class="nav-link" href="?page=peminjaman">
+                                <div class="sb-nav-link-icon"><i class="fas fa-shopping-cart"></i></div>
+                                Transaksi
+                              </a>
                               <a class="nav-link" href="?page=kategori">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 Kategori
@@ -154,12 +160,16 @@
                              <?php
                             if ($_SESSION['user']['role_id'] == 'Peminjam') {
                             ?>
+                              <a class="nav-link" href="?page=buku_peminjam">
+                                <div class="sb-nav-link-icon"><i class="fas fa-book"></i></div>
+                                Buku
+                              </a>
                             <a class="nav-link" href="?page=peminjaman">
                                 <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                                 Peminjaman
-                              <a class="nav-link" href="?page=ulasan">
+                            <a class="nav-link" href="?page=ulasan">
                                 <div class="sb-nav-link-icon"><i class="fas fa-comment"></i></div>
-                                Ulasan
+                                Riwayat Ulasan
                               </a>
                             <?php
                             }
@@ -207,13 +217,15 @@
         <script src="assets/demo/chart-bar-demo.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
         <script src="js/datatables-simple-demo.js"></script>
-
-        <!-- <script> document.addEventListener("DOMContentLoaded", function() {
-        document.querySelector("form").addEventListener("submit", function(e) {
-            e.preventDefault();
-        });
-        });
-        </script> -->
-
+        <!-- Datepicker -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+        <script>
+          $(document).ready(function() {
+              $(".datepicker").datepicker({
+                  dateFormat: 'dd-mm-yy'
+              });
+          });
+        </script>
     </body>
 </html>

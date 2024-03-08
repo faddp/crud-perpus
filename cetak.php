@@ -11,7 +11,7 @@
         <?php
         include "koneksi.php";
         $i=1;
-        $query =  mysqli_query($koneksi, "SELECT*FROM peminjaman LEFT JOIN user on user.id_user = peminjaman.id_user LEFT JOIN buku on buku.id_buku = peminjaman.id_buku");
+        $query =  mysqli_query($koneksi, "SELECT*FROM peminjaman_buku LEFT JOIN user_perpus on user_perpus.id_user = peminjaman_buku.id_user LEFT JOIN book on book.id_buku = peminjaman_buku.id_buku");
         while($data = mysqli_fetch_array($query)){
             ?>
             <tr>

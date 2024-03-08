@@ -11,10 +11,26 @@ include  "./koneksi.php";
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Login Ke Perpustakaan</title>
+        <style>
+            body.bg-hijau {
+                background: #08533E;
+               /* #346768, #66999A, #073A3B , #08533E */
+            }
+
+            .card.shadow-lg {
+                background-color: white;
+            }
+
+            .logo {
+              width: 100px; 
+              margin-top: 20px; 
+             margin-bottom: 20px;
+             } 
+        </style>
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     </head>
-    <body class="bg-primary">
+    <body class="bg-hijau">
         <div id="layoutAuthentication">
             <div id="layoutAuthentication_content">
                 <main>
@@ -22,7 +38,10 @@ include  "./koneksi.php";
                         <div class="row justify-content-center">
                             <div class="col-lg-5">
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Login</h3></div>
+
+                                    <div class="card-header text-center"><h3 class="text-center font-weight-light my-4">Login</h3>
+                                    <img src="gambar/logo.png" alt="Logo" class="logo">
+                                    </div>
                                     <div class="card-body">
 
                                         <?php

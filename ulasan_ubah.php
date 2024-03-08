@@ -29,7 +29,7 @@
     <div class="row mb-3">
     <div class="col-md-2">Buku </div>
     <div class="col-md-8">
-        <select name="id_buku" class="form-control">
+    <select name="id_buku" class="form-control" onchange="updateImageAndDescription()">
             <?php
             $buk = mysqli_query($koneksi,"SELECT * FROM book");
             while($buku = mysqli_fetch_array($buk)){
@@ -50,6 +50,7 @@
 
     <div class="row mb-3">
     <div class="col-md-2">Rating</div>
+    <div class="col-md-8">
     <select name="rating" class="form-control">
             <?php
                 for($i = 1; $i<=10; $i++){
@@ -61,6 +62,20 @@
     </select>
     </div>
     </div>
+
+    <script>
+        function updateImageAndDescription(){
+            var selectedBookId = document.getElementsByName('id_buku')[0].value;
+            var buk = <?php echo json_encode(mysqli_fetch_all(mysqli_query($koneksi, "SELECT id_buku, sampul, deskripsi FROM book"), MYSQLI_ASSOC)); ?>;
+            var selectedBook = buk.find(book => book.id_buku == selectedBookId);
+            if (selectedBook){
+                document.getElementById('sampul_buku').src = 'gambar/' + selectedBook.sampul;
+            }else{
+                document.getElementById('sampul_buku').src = '';
+            }
+        }
+    </script>
+
    <div class="row">
     <div class="col-md-4"></div>
 

@@ -13,28 +13,39 @@
             <th>Alamat</th>
             <th>Level</th>
         </tr>
+
         <?php
-        $i=1;
-        $query =  mysqli_query($koneksi, "SELECT*FROM user_perpus");
-        while($data = mysqli_fetch_array($query)){
-            ?>
-             <tr>
-                <td><?php echo $i++; ?> </td>
-                <td><?php echo $data['nama']; ?> </td>
-                <td><?php echo $data['username']; ?> </td>
-                <td><?php echo $data['email']; ?> </td>
-                <td><?php echo $data['alamat']; ?> </td>
-                <td><?php echo $data['role_id']; ?> </td>
-                <td>
-                    <div class="d-flexx">
-                    <a href="?page=user_ubah&&id=<?php echo $data['id_user']; ?>" class="btn btn-info flex-fill me-2"> Ubah </a>
-                    <a onclick="return confirm('Apakah anda yakin menghapus data ini?')" href="?page=user_hapus&&id=<?php echo $data['id_user']; ?>" class="btn btn-danger flex-fill"> Hapus </a>
+        $i = 1;
+        $query = mysqli_query($koneksi, "SELECT * FROM user_perpus");
+        while ($data = mysqli_fetch_array($query)) {
+        ?>
+        <tr>
+        <td><?php echo $i++; ?> </td>
+        <td><?php echo $data['nama']; ?> </td>
+        <td><?php echo $data['username']; ?> </td>
+        <td><?php echo $data['email']; ?> </td>
+        <td><?php echo $data['alamat']; ?> </td>
+        <td><?php echo $data['role_id']; ?> </td>
+        <td>
+            <div class="d-flex">
+                <?php
+                if ($data['role_id'] != 'Admin') {
+                    ?>
+                    <a href="?page=user_ubah&&id=<?php echo $data['id_user']; ?>" class="btn btn-info flex-fill me-2">Ubah</a>
+                <?php
+                }
+                if ($data['role_id'] != 'Admin') {
+                    ?>
+                    <a onclick="return confirm('Apakah anda yakin menghapus data ini?')" href="?page=user_hapus&&id=<?php echo $data['id_user']; ?>" class="btn btn-danger flex-fill">Hapus</a>
+                <?php
+                }
+                ?>
                     </div>
                 </td>
             </tr>
-            <?php
-        }
-        ?>
+         <?php
+         }
+         ?>
     </table>
  </div>
 </div>

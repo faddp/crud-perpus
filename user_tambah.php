@@ -9,17 +9,23 @@
     if(isset($_POST['submit'])){
         $nama = $_POST['nama'];
         $username = $_POST['username'];
+        $password = md5($_POST['password']);
         $email = $_POST['email'];
         $alamat = $_POST['alamat'];
         $role_id = $_POST['role_id'];
 
-        $query = mysqli_query($koneksi, "INSERT INTO user_perpus (nama, username, email, alamat, role_id) VALUES ('$nama', '$username', '$email', '$alamat', '$role_id')");
-      
+        // Validasi username tidak mengandung spasi
+        if(strpos($username, ' ') !== false){
+        echo '<script>alert("Username tidak boleh mengandung spasi");</script>';
+       } else {
+        $query = mysqli_query($koneksi, "INSERT INTO user_perpus (nama, username, password, email, alamat, role_id) VALUES ('$nama', '$username', '$password', '$email', '$alamat', '$role_id')");
+
         if($query){
             echo '<script>alert("Tambah Data Berhasil"); location.href="?page=user"</script>';
         }else{
             echo '<script>alert("Tambah Data Gagal");</script>';
         }
+    }
     }
     ?>
 
@@ -30,6 +36,10 @@
 <div class="row mb-3">
 <div class="col-md-2">Username </div>
 <div class="col-md-8"><input type="text" class="form-control" name="username"></div>
+</div>
+<div class="row mb-3">
+<div class="col-md-2">Password </div>
+<div class="col-md-8"><input type="password" class="form-control" name="password"></div>
 </div>
 <div class="row mb-3">
 <div class="col-md-2">Email </div>

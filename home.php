@@ -3,6 +3,7 @@
                             <li class="breadcrumb-item active">Dashboard</li>
                         </ol>
                         <div class="row">
+                        <?php if ($_SESSION['user']['role_id'] != 'Peminjam'): ?>
                             <div class="col-xl-3 col-md-6">
                                 <div class="card bg-primary text-white mb-4">
                                     <div class="card-body">
@@ -11,7 +12,7 @@
                                     ?>
                                     Total Kategori</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
+                                        <a class="small text-white stretched-link" href="?page=kategori">View Details</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
@@ -24,7 +25,7 @@
                                     ?>    
                                     Total Buku</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
+                                        <a class="small text-white stretched-link" href="?page=buku">View Details</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
@@ -37,7 +38,7 @@
                                     ?>    
                                     Total Ulasan</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
+                                        <a class="small text-white stretched-link"  href="?page=ulasan">View Details</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
@@ -46,16 +47,18 @@
                                 <div class="card bg-danger text-white mb-4">
                                     <div class="card-body">
                                     <?php    
-                                     echo mysqli_num_rows(mysqli_query($koneksi, "SELECT*FROM user_perpus"));
+                                     echo mysqli_num_rows(mysqli_query($koneksi, "SELECT*FROM peminjaman_buku"));
                                     ?>        
-                                    Total User</div>
+                                    Total Peminjaman</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
+                                        <a class="small text-white stretched-link" href="?page=laporan">View Details</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
                             </div>
+                            <?php endif; ?>
                         </div>
+                        
                         <div class="card">
                             <div class="card-body">
                                 <table class="table table-bordered">
